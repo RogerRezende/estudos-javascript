@@ -7,9 +7,39 @@
 	<title>Estudos Javascript - DOM</title>
 </head>
 <body>
+	<!-- inserção de vários buttons -->
+	<button onclick="clicar()">Clicar</button>
+	<button id="btn">Clicando</button>
 
 	<script type="text/javascript">
-		
+		//variável button que irá receber o elemento com o id btn
+		const button = document.getElementById('btn');
+
+		//função com um evento onclick no button
+		function clicar(){
+			alert('Hello World!!!');
+		}
+
+		//outra maneira de chamar a função clicar
+		button.addEventListener('click', clicar);
+
+		//irá funcionar o mais rápido possível que o documento seja acessado
+		document.addEventListener('DOMContentLoaded', function() {
+			if (navigator.onLine) {
+				alert('Online 2');
+			} else {
+				alert('Offline 2');
+			}
+		});
+
+		//verificar se a página está local ou online, só funciona quando todo o conteúdo da página estiver carregado
+		document.body.onload = function() {
+			if (navigator.onLine) {
+				alert('Online');
+			} else {
+				alert('Offline');
+			}
+		}
 	</script>
 </body>
 </html>

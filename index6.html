@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Estudos Javascript - DOM</title>
+</head>
+<body>
+	<!-- Criando um IMC -->
+
+	<!-- Título da Página -->
+	<h1>IMC</h1>
+
+	<!-- Input da Altura -->
+	<input type="text" id="altura" name="altura" placeholder="Digite a Altura">
+	<!-- Input do Peso -->
+	<input type="text" id="peso" name="peso" placeholder="Digite o Peso">
+
+	<!-- Botão para Calcular o IMC -->
+	<button type="button" id="botao" onclick="calcularImc()">Calcular</button>
+
+	<!-- Apresentar o Resultado do IMC -->
+	<div id="resultado">
+		
+	</div>
+
+	<script type="text/javascript">
+		//fórmula para cálculo - IMC = PESO / (ALTURA * ALTURA)
+
+		//VARIÁVEIS
+		const altura = document.getElementById('altura');
+		const peso = document.getElementById('peso');
+		const botao = document.getElementById('botao');
+		const resultado = document.getElementById('resultado');
+
+		//alteração do estilo do input altura
+		altura.style.display = 'block';
+		altura.style.width = '90%';
+		altura.style.padding = '.4rem .75rem';
+		altura.style.fontSize = '1rem';
+		altura.style.color = '#494949';
+		altura.style.borderRadius = '.25rem';
+		altura.style.border = '1px solid #cecece';
+
+		//alteração do estilo do input peso
+		peso.style.display = 'block';
+		peso.style.width = '90%';
+		peso.style.padding = '.4rem .75rem';
+		peso.style.fontSize = '1rem';
+		peso.style.color = '#494949';
+		peso.style.borderRadius = '.25rem';
+		peso.style.border = '1px solid #cecece';
+
+		//alteração do estilo do button botao
+		botao.style.display = 'inline-block';
+		botao.style.fontWeight = '400';
+		botao.style.border = '1px solid transparent';
+		botao.style.padding = '.4rem .75rem';
+		botao.style.fontSize = '1rem';
+		botao.style.borderRadius = '.25rem';
+		botao.style.background = '#0062cc';
+		botao.style.color = '#ffffff';
+
+		//função para calcular o IMC
+		function calcularImc(){
+			//VARIÁVEIS
+			const imc = peso.value / (altura.value * altura.value);
+
+			//condição para indicar a situação do IMC
+			if(imc < 18.5){
+				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Abaixo do Peso</h3>';
+			} else if(imc >= 18.5 && imc < 25){
+				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Peso Normal</h3>';
+			} else if(imc >= 25 && imc < 30){
+				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Sobrepeso</h3>';
+			} else if(imc >= 30 && imc < 35){
+				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Obesidade Grau 1</h3>';
+			} else if(imc >= 35 && imc < 40){
+				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Obesidade Grau 2</h3>';
+			} else {
+				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Obesidade Grau 3</h3>';
+			}
+		}
+	</script>
+</body>
+</html>

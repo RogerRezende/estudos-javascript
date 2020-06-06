@@ -15,6 +15,19 @@ function getTotal(lista){
 	//retorna o valor total da compra
 	return total;
 }
+//função que irá setar a lista de compras
+function setLista(lista){
+	//variável que irá receber a tabela
+	var tabela = '<thead><tr><th scope="col">Descrição</th><th scope="col">Quantidade</th><th scope="col">Valor</th><th scope="col">Ação</th></tr></thead><tbody>';
+	//laço de repetição que irá popular a tabela
+	for(var key in lista){
+		tabela += '<tr><th scope="row">' + lista[key].descricao + '</th><td>' + lista[key].quantidade + '</td><td>' + lista[key].valor + '</td><td>Editar | Deletar</td></tr>';
+	}
+	tabela += '</tbody>';
+	document.getElementById('listaTabela').innerHTML = tabela;
+}
 
+//utilizando a função setLista
+setLista(lista);
 //impressão no log para verificar se deu certo o código
 console.log(getTotal(lista));

@@ -18,7 +18,7 @@
 	<input type="text" id="peso" name="peso" placeholder="Digite o Peso">
 
 	<!-- Botão para Calcular o IMC -->
-	<button type="button" onclick="calcularImc()">Calcular</button>
+	<button type="button" id="botao" onclick="calcularImc()">Calcular</button>
 
 	<!-- Apresentar o Resultado do IMC -->
 	<div id="resultado">
@@ -28,12 +28,40 @@
 	<script type="text/javascript">
 		//fórmula para cálculo - IMC = PESO / (ALTURA * ALTURA)
 
+		//VARIÁVEIS
+		const altura = document.getElementById('altura');
+		const peso = document.getElementById('peso');
+		const botao = document.getElementById('botao');
+		const resultado = document.getElementById('resultado');
+
+		altura.style.display = 'block';
+		altura.style.width = '90%';
+		altura.style.padding = '.4rem .75rem';
+		altura.style.fontSize = '1rem';
+		altura.style.color = '#494949';
+		altura.style.borderRadius = '.25rem';
+		altura.style.border = '1px solid #cecece';
+
+		peso.style.display = 'block';
+		peso.style.width = '90%';
+		peso.style.padding = '.4rem .75rem';
+		peso.style.fontSize = '1rem';
+		peso.style.color = '#494949';
+		peso.style.borderRadius = '.25rem';
+		peso.style.border = '1px solid #cecece';
+
+		botao.style.display = 'inline-block';
+		botao.style.fontWeight = '400';
+		botao.style.border = '1px solid transparent';
+		botao.style.padding = '.4rem .75rem';
+		botao.style.fontSize = '1rem';
+		botao.style.borderRadius = '.25rem';
+		botao.style.background = '#0062cc';
+		botao.style.color = '#ffffff';
+
 		function calcularImc(){
 			//VARIÁVEIS
-			const altura = document.getElementById('altura');
-			const peso = document.getElementById('peso');
 			const imc = peso.value / (altura.value * altura.value);
-			const resultado = document.getElementById('resultado');
 
 			if(imc < 18.5){
 				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Abaixo do Peso</h3>';

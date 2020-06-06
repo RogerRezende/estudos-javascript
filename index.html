@@ -7,8 +7,47 @@
 	<title>Estudos Javascript - DOM</title>
 </head>
 <body>
+	<!-- inserção de vários paragrafos -->
+	<p id="text">Hello World!!!</p>
+	<p class="text2">Testando</p>
+	<!-- inserção de input -->
+	<input type="text" name="text3">
+
 	<script type="">
-		
+		//VARIÁVEIS CRIADAS E ATRIBUÍDAS
+		//variável p irá receber todos os elementos com a tag P
+		const p = document.getElementsByTagName('p');
+		//variável p2 irá receber o elemento com o id text
+		const p2 = document.getElementById('text');
+		//variável p3 irá receber todos os elementos com o class text2
+		const p3 = document.getElementsByClassName('text2');
+		//variável a irá receber todos os elementos com o name text3 - name não é utilizado em todas as tags
+		const a = document.getElementsByName('text3');
+
+		//IMPRESSÕES NO CONSOLE
+		//imprime no console todos os elementos da lista gerada de elementos p, mostrando todas as funções que podem ser utilizadas
+		console.log(p);
+		//imprime no console o contéudo do texto do primeiro termo p da lista
+		console.log(p[0].textContent);
+
+		//imprime no console o elemento p2
+		console.log(p2);
+		//imprime no console o contéudo do texto do elemento p2
+		console.log(p2.textContent);
+
+		//imprime no console todos os elementos da lista gerada de elementos com o class text2, mostrando todas as funções que podem ser utilizadas
+		console.log(p3);
+		//imprime no console o contéudo do texto do elemento p3
+		console.log(p3[0].textContent);
+
+		//imprime no console todos os elementos da lista gerada de elementos com o name text3, mostrando todas as funções que podem ser utilizadas
+		console.log(a);
+		//imprime no console a identificação do nome do nó
+		console.log(a[0].nodeName);
+		//imprime no console a identificação do tipo do nó
+		console.log(a[0].nodeType);
+		//imprime no console a identificação do valor do nó
+		console.log(a[0].nodeValue);
 	</script>
 </body>
 </html>

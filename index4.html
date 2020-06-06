@@ -7,10 +7,48 @@
 	<title>Estudos Javascript - DOM</title>
 </head>
 <body>
-	
+	<!-- Criando um IMC -->
+
+	<!-- Título da Página -->
+	<h1>IMC</h1>
+
+	<!-- Input da Altura -->
+	<input type="text" id="altura" name="altura" placeholder="Digite a Altura">
+	<!-- Input do Peso -->
+	<input type="text" id="peso" name="peso" placeholder="Digite o Peso">
+
+	<!-- Botão para Calcular o IMC -->
+	<button type="button" onclick="calcularImc()">Calcular</button>
+
+	<!-- Apresentar o Resultado do IMC -->
+	<div id="resultado">
+		
+	</div>
 
 	<script type="text/javascript">
-		
+		//fórmula para cálculo - IMC = PESO / (ALTURA * ALTURA)
+
+		function calcularImc(){
+			//VARIÁVEIS
+			const altura = document.getElementById('altura');
+			const peso = document.getElementById('peso');
+			const imc = peso.value / (altura.value * altura.value);
+			const resultado = document.getElementById('resultado');
+
+			if(imc < 18.5){
+				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Abaixo do Peso</h3>';
+			} else if(imc >= 18.5 && imc < 25){
+				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Peso Normal</h3>';
+			} else if(imc >= 25 && imc < 30){
+				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Sobrepeso</h3>';
+			} else if(imc >= 30 && imc < 35){
+				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Obesidade Grau 1</h3>';
+			} else if(imc >= 35 && imc < 40){
+				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Obesidade Grau 2</h3>';
+			} else {
+				resultado.innerHTML = '<h3>Resultado: ' + imc + ' = Obesidade Grau 3</h3>';
+			}
+		}
 	</script>
 </body>
 </html>

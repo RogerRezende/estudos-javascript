@@ -7,10 +7,29 @@
 	<title>Estudos Javascript - DOM</title>
 </head>
 <body>
-	
+	<!-- inserção de vários paragrafos -->
+	<p id="text">Hello World!!!</p>
 
 	<script type="text/javascript">
-		
+		//VARIÁVEIS CRIADAS E ATRIBUÍDAS
+		//variável button que irá criar de maneira simples o elemento button
+		let button = document.createElement('button');
+		//variável attr que irá criar um atributo class
+		let attr = document.createAttribute('class');
+		//variável text que irá criar um texto
+		let text = document.createTextNode('Custom');
+		//inserindo um valor para attr
+		attr.value = 'customize';
+		//setando o atributo attr no button
+		button.setAttributeNode(attr);
+		//acrescentando o texto text no button
+		button.appendChild(text);
+
+		//INSERÇÃO E EXCLUSÃO DE ELEMENTOS
+		//inserção do button no body
+		document.body.appendChild(button);
+		//remoção do p do body
+		document.body.removeChild(document.getElementById('text'));
 	</script>
 </body>
 </html>

@@ -44,8 +44,15 @@
 			    <!-- Botão para Cancelar -->
 			    <button onclick="resetarFormulario();" class="btn btn-primary">Cancelar</button>
 			</span>
-			<!-- Botão para Adicionar Item -->
-			<button id="btnAdicionar" onclick="adicionarDados();" class="btn btn-primary">Adicionar</button>
+			<!-- Botões Adicionar, Limpar e Excluir Lista -->
+			<span id="btnAdicionar">
+				<!-- Botão para Adicionar Item -->
+				<button onclick="adicionarDados();" class="btn btn-primary">Adicionar</button>
+				<!-- Botão para Limpar os Inputs do Formulário -->
+				<button onclick="resetarFormulario();" class="btn btn-primary">Limpar</button>
+				<!-- Botão para Excluir a Lista de Compras -->
+				<button onclick="deletarLista();" class="btn btn-primary">Excluir Lista</button>
+			</span>
 		</div>
 
 		<!-- Impressão dos erros ocorridos nos inputs do formulário -->

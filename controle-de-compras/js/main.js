@@ -73,6 +73,9 @@ function adicionarDados(){
 
 	//setando o novo item para mostrar na página
 	setLista(lista);
+
+	//limpar dados do formulário
+	resetarFormulario();
 }
 //função que irá atualizar os valores já presentes na lista de compras
 function setarAtualizacao(id){
@@ -222,6 +225,20 @@ function validacao(){
 	//se não houver erros, retorna 1
 	else{
 		return 1;
+	}
+}
+//função para deletar lista de compras
+function deletarLista(){
+	//verificar com o usuário se ele quer deletar a lista
+	if(confirm("Deletar esta lista?")){
+		//deixar a lista vazia
+		lista = [];
+
+		//imprimir a lista de compras vazia na página
+		setLista(lista);
+
+		//limpar dados do formulário
+		resetarFormulario();
 	}
 }
 

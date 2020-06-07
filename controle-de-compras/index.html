@@ -35,8 +35,15 @@
 			<div class="form-group">
 				<input type="text" class="form-control" id="valor" name="valor" placeholder="Valor">
 			</div>
+			<!--  -->
+			<span id="btnAtualizacao" style="display: none;">
+				<!-- Botão para Salvar -->
+			    <button onclick="salvarDados();" class="btn btn-primary">Salvar</button>
+			    <!-- Botão para Cancelar -->
+			    <button onclick="resetarFormulario();" class="btn btn-primary">Cancelar</button>
+			</span>
 			<!-- Botão para Adicionar Item -->
-			<button onclick="adicionarDados();" class="btn btn-default">Adicionar</button>
+			<button id="btnAdicionar" onclick="adicionarDados();" class="btn btn-primary">Adicionar</button>
 		</div>
 
 		<!-- tabela com a lista de itens para compra -->

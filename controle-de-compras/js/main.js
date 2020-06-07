@@ -21,7 +21,7 @@ function setLista(lista){
 	var tabela = '<thead><tr><th scope="col">Descrição</th><th scope="col">Quantidade</th><th scope="col">Valor</th><th scope="col">Ação</th></tr></thead><tbody>';
 	//laço de repetição que irá popular a tabela
 	for(var key in lista){
-		tabela += '<tr><th scope="row">' + formatarDescricao(lista[key].descricao) + '</th><td>' + lista[key].quantidade + '</td><td>' + formatarValor(lista[key].valor) + '</td><td><button onclick="setarAtualizacao('+ key +');" class="btn btn-primary">Editar</button>  <button onclick="deletarDado('+ key +');" class="btn btn-primary">Deletar</button></td></tr>';
+		tabela += '<tr><th scope="row">' + formatarDescricao(lista[key].descricao) + '</th><td>' + formatarQuantidade(lista[key].quantidade) + '</td><td>' + formatarValor(lista[key].valor) + '</td><td><button onclick="setarAtualizacao('+ key +');" class="btn btn-primary">Editar</button>  <button onclick="deletarDado('+ key +');" class="btn btn-primary">Deletar</button></td></tr>';
 	}
 	tabela += '</tbody>';
 	document.getElementById('listaTabela').innerHTML = tabela;
@@ -34,6 +34,11 @@ function formatarDescricao(descricao){
 	string = string.charAt(0).toUpperCase() + string.slice(1);
 	//retorna a descrição alterada
 	return string
+}
+//função que irá formatar as quantidades
+function formatarQuantidade(quantidade){
+	//retorna a quantidade apenas quando ela for um inteiro
+	return parseInt(quantidade);
 }
 //função que irá formatar os valores
 function formatarValor(valor){
@@ -48,6 +53,11 @@ function formatarValor(valor){
 }
 //função que irá adicionar novos itens para a lista de compras
 function adicionarDados(){
+	//faz a validação dos dados digitados
+	if(!validacao()){
+		return;
+	}
+	
 	//variável que irá receber a descrição do campo descricao
 	var descricao = document.getElementById('descricao').value;
 	//variável que irá receber a quantidade do campo quantidade
@@ -97,9 +107,16 @@ function resetarFormulario(){
 
 	//irá limpar o input que recebeu o id da lista de compras
 	document.getElementById('inputIdAtualizacao').innerHTML = "";
+	//retira a div erros na página
+	document.getElementById('erros').style.display = 'none';
 }
 //função que irá fazer a atualização do item da lista de compras
 function salvarDados(){
+	//faz a validação dos dados digitados
+	if(!validacao()){
+		return;
+	}
+
 	//variável que irá receber o id da lista de compras
 	var id = document.getElementById('idAtualizacao').value;
 	//variável que irá receber a possível nova descrição do item da lista de compras
@@ -144,6 +161,64 @@ function deletarDado(id){
 
 		//irá mostrar a lista de compras atualizada
 		setLista(lista);
+	}
+}
+//função que irá validar os dados para inserir corretamente na lista de compras
+function validacao(){
+	//variável que irá receber a descrição do item para inserir na lista de compras
+	var descricao = document.getElementById('descricao').value;
+	//variável que irá receber a quantidade do item para inserir na lista de compras
+	var quantidade = document.getElementById('quantidade').value;
+	//variável que irá receber o valor do item para inserir na lista de compras
+	var valor = document.getElementById('valor').value;
+	//variável que irá apresentar o erro apresentado após uma informação errada dos dados do item da compra
+	var erros = "";
+
+	//esconde a div erros na página
+	document.getElementById('erros').style.display = 'none';
+
+	//verifica se a descrição está sem nenhum preenchimento no input
+	if(descricao === ""){
+		erros += '<p>Falta o Preenchimento da Descrição</p>';
+	}
+
+	//verifica se a quantidade está sem nenhum preenchimento no input
+	if(quantidade === ""){
+		erros += '<p>Falta o Preenchimento da Quantidade</p>';
+	}
+	//verifica se a quantidade foi preenchida apenas com números inteiros
+	else if(quantidade != parseInt(quantidade)){
+		erros += '<p>Digite um valor válido para a quantidade</p>';
+	}
+
+	//verifica se o valor está sem nenhum preenchimento no input
+	if(valor === ""){
+		erros += '<p>Falta o Preenchimento do Valor</p>';
+	}
+	//verifica se o valor foi preenchido apenas com números floats
+	else if(valor != parseFloat(valor)){
+		erros += '<p>Digite um valor válido para o valor</p>';
+	}
+
+	//verifica se há erros no preenchimento dos inputs
+	if(erros != ""){
+		//mostra a div erros na página
+		document.getElementById('erros').style.display = 'block';
+		//definindo um style para a div erros
+		document.getElementById('erros').style.backgroundColor = 'green';
+		document.getElementById('erros').style.color = 'white';
+		document.getElementById('erros').style.padding = '10px';
+		document.getElementById('erros').style.margin = '10px';
+		document.getElementById('erros').style.borderRadius = '12px';
+		//imprime os erros ocorridos na página
+		document.getElementById('erros').innerHTML = '<h3>Erros: </h3>' + erros;
+
+		//se houver erros, retorna 0
+		return 0;
+	}
+	//se não houver erros, retorna 1
+	else{
+		return 1;
 	}
 }
 

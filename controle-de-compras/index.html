@@ -33,7 +33,7 @@
 			</div>
 			<!-- Valor -->
 			<div class="form-group">
-				<input type="text" class="form-control" id="valor" name="valor" placeholder="Valor">
+				<input type="text" class="form-control" id="valor" name="valor" placeholder="Valor (ex: 2.80)">
 			</div>
 			<!-- Botões para Salvar ou Cancelar uma Atualização -->
 			<span id="btnAtualizacao" style="display: none;">
@@ -47,6 +47,9 @@
 			<!-- Botão para Adicionar Item -->
 			<button id="btnAdicionar" onclick="adicionarDados();" class="btn btn-primary">Adicionar</button>
 		</div>
+
+		<!-- Impressão dos erros ocorridos nos inputs do formulário -->
+		<div id="erros" style="display: none;"></div>
 
 		<!-- tabela com a lista de itens para compra -->
 		<table id="listaTabela" class="table">

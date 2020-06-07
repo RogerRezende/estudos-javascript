@@ -21,8 +21,26 @@
 
 	<!-- lista de dados da compra -->
 	<div class="container-fluid">
+		<!-- inputs para cadastro de novos itens da compra -->
+		<div class="form-inline">
+			<!-- Descrição -->	
+			<div class="form-group">
+				<input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição">
+			</div>
+			<!-- Quantidade -->
+			<div class="form-group">
+				<input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade">
+			</div>
+			<!-- Valor -->
+			<div class="form-group">
+				<input type="text" class="form-control" id="valor" name="valor" placeholder="Valor">
+			</div>
+			<!-- Botão para Adicionar Item -->
+			<button onclick="adicionarDados();" class="btn btn-default">Adicionar</button>
+		</div>
+
 		<!-- tabela com a lista de itens para compra -->
-		<table id="listaTabela" class="table table-dark">
+		<table id="listaTabela" class="table">
 			  
 		</table>	
 	</div>

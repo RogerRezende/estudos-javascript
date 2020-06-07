@@ -35,7 +35,6 @@ function formatarDescricao(descricao){
 	//retorna a descrição alterada
 	return string
 }
-
 //função que irá formatar os valores
 function formatarValor(valor){
 	//irá transformar o valor em float e fixo duas casas decimais
@@ -46,6 +45,21 @@ function formatarValor(valor){
 	string = "R$ " + string;
 	//retorna o valor alterado
 	return string
+}
+//função que irá adicionar novos itens para a lista de compras
+function adicionarDados(){
+	//variável que irá receber a descrição do campo descricao
+	var descricao = document.getElementById('descricao').value;
+	//variável que irá receber a quantidade do campo quantidade
+	var quantidade = document.getElementById('quantidade').value;
+	//variável que irá receber o valor do campo valor
+	var valor = document.getElementById('valor').value;
+
+	//inserir na lista de compras na primeira posição dela
+	lista.unshift({'descricao': descricao, 'quantidade': quantidade, "valor": valor});
+
+	//setando o novo item para mostrar na página
+	setLista(lista);
 }
 
 //utilizando a função setLista

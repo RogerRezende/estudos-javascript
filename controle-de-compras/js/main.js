@@ -77,6 +77,9 @@ function setarAtualizacao(id){
 	document.getElementById('btnAtualizacao').style.display = 'inline-block';
 	//irá alterar a visualizaçao do botão para adicionar um item
 	document.getElementById('btnAdicionar').style.display = 'none';
+
+	//irá criar o input para receber o id da lista de compras
+	document.getElementById('inputIdAtualizacao').innerHTML = '<input id="idAtualizacao" type="hidden" value="'+ id +'">';
 }
 //função que irá resetar os dados que aparecem nos inputs do formulário
 function resetarFormulario(){
@@ -91,7 +94,30 @@ function resetarFormulario(){
 	document.getElementById('btnAtualizacao').style.display = 'none';
 	//irá alterar a visualizaçao do botão para adicionar um item
 	document.getElementById('btnAdicionar').style.display = 'inline-block';
+
+	//irá limpar o input que recebeu o id da lista de compras
+	document.getElementById('inputIdAtualizacao').innerHTML = "";
 }
+//função que irá fazer a atualização do item da lista de compras
+function salvarDados(){
+	//variável que irá receber o id da lista de compras
+	var id = document.getElementById('idAtualizacao').value;
+	//variável que irá receber a possível nova descrição do item da lista de compras
+	var descricao = document.getElementById('descricao').value;
+	//variável que irá receber a possível nova quantidade do item da lista de compras
+	var quantidade = document.getElementById('quantidade').value;
+	//variável que irá receber o possível novo valor do item da lista de compras
+	var valor = document.getElementById('valor').value;
+
+	//inserindo na lista o item atualizado da lista de compras
+	lista[id] = {'descricao': descricao, 'quantidade': quantidade, 'valor': valor};
+
+	//irá resetar os inputs do formulário
+	resetarFormulario();
+	//irá mostrar a lista de compras atualizada
+	setLista(lista);
+}
+
 //utilizando a função setLista
 setLista(lista);
 //impressão no log para verificar se deu certo o código

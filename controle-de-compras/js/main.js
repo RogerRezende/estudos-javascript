@@ -21,7 +21,7 @@ function setLista(lista){
 	var tabela = '<thead><tr><th scope="col">Descrição</th><th scope="col">Quantidade</th><th scope="col">Valor</th><th scope="col">Ação</th></tr></thead><tbody>';
 	//laço de repetição que irá popular a tabela
 	for(var key in lista){
-		tabela += '<tr><th scope="row">' + formatarDescricao(lista[key].descricao) + '</th><td>' + lista[key].quantidade + '</td><td>' + formatarValor(lista[key].valor) + '</td><td><button onclick="setarAtualizacao('+ key +');" class="btn btn-primary">Editar</button> | Deletar</td></tr>';
+		tabela += '<tr><th scope="row">' + formatarDescricao(lista[key].descricao) + '</th><td>' + lista[key].quantidade + '</td><td>' + formatarValor(lista[key].valor) + '</td><td><button onclick="setarAtualizacao('+ key +');" class="btn btn-primary">Editar</button>  <button onclick="deletarDado('+ key +');" class="btn btn-primary">Deletar</button></td></tr>';
 	}
 	tabela += '</tbody>';
 	document.getElementById('listaTabela').innerHTML = tabela;
@@ -116,6 +116,35 @@ function salvarDados(){
 	resetarFormulario();
 	//irá mostrar a lista de compras atualizada
 	setLista(lista);
+}
+//função que irá deletar item da lista de compras
+function deletarDado(id){
+	//verificar se o usuário quer apagar mesmo o item da lista de compras
+	if(confirm("Deletar este item?")){
+		//verifica se o item é o último da lista de compras
+		if(id === lista.length - 1){
+			//retira o último item da lista de compras
+			lista.pop();
+		}
+		//verifica se o item é o primeiro da lista de compras
+		else if(id === 0){
+			//retira o primeiro item da lista de compras
+			lista.shift();
+		}
+		//se o item estiver no meio da lista de compras, em uma posição qualquer
+		else{
+			//variável que irá percorrer a lista de compras do primeiro até o item a ser deletado
+			var arrayAuxInicio = lista.slice(0, id);
+			//variável que irá percorrer a lista de compras do item a ser deletado até o último item da lista de compras
+			var arrayAuxFinal = lista.slice(id + 1);
+
+			//irá percorrer a lista, concatenando os arrays de início e final da lista de compras
+			lista = arrayAuxInicio.concat(arrayAuxFinal);
+		}
+
+		//irá mostrar a lista de compras atualizada
+		setLista(lista);
+	}
 }
 
 //utilizando a função setLista

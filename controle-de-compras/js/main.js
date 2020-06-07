@@ -12,8 +12,8 @@ function getTotal(lista){
 	for(var chave in lista){
 		total += lista[chave].valor * lista[chave].quantidade;
 	}
-	//retorna o valor total da compra
-	return total;
+	//imprimir na página o valor total da compra
+	document.getElementById('totalCompra').innerHTML = formatarValor(total);
 }
 //função que irá setar a lista de compras
 function setLista(lista){
@@ -24,7 +24,10 @@ function setLista(lista){
 		tabela += '<tr><th scope="row">' + formatarDescricao(lista[key].descricao) + '</th><td>' + formatarQuantidade(lista[key].quantidade) + '</td><td>' + formatarValor(lista[key].valor) + '</td><td><button onclick="setarAtualizacao('+ key +');" class="btn btn-primary">Editar</button>  <button onclick="deletarDado('+ key +');" class="btn btn-primary">Deletar</button></td></tr>';
 	}
 	tabela += '</tbody>';
+	//irá imprimir na página a tabela com os itens da lista de compras
 	document.getElementById('listaTabela').innerHTML = tabela;
+	//irá mostrar o valor total da compra na página
+	getTotal(lista);
 }
 //função que irá formatar as descrições
 function formatarDescricao(descricao){
@@ -222,7 +225,5 @@ function validacao(){
 	}
 }
 
-//utilizando a função setLista
+//utilizando para mostrar a lista de compras
 setLista(lista);
-//impressão no log para verificar se deu certo o código
-console.log(getTotal(lista));

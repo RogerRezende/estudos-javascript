@@ -28,6 +28,8 @@ function setLista(lista){
 	document.getElementById('listaTabela').innerHTML = tabela;
 	//irá mostrar o valor total da compra na página
 	getTotal(lista);
+	//irá salvar os dados mais atualizados no storage
+	salvarListaStorage(lista);
 }
 //função que irá formatar as descrições
 function formatarDescricao(descricao){
@@ -241,6 +243,33 @@ function deletarLista(){
 		resetarFormulario();
 	}
 }
+//função para salvar lista no Storage
+function salvarListaStorage(lista){
+	//variável para transformar a lista em json
+	var jsonString = JSON.stringify(lista);
 
-//utilizando para mostrar a lista de compras
-setLista(lista);
+	//salvar no local storage
+	localStorage.setItem("lista", jsonString);
+}
+//função de inicialização da lista do Storage
+function inicializarListaStorage(){
+	//variável para usar na verificação se a lista já está salva no storage
+	var testarLista = localStorage.getItem('lista');
+
+	//verificar se está salvo no storage
+	if(testarLista){
+		//atribuir para a lista o array presente no storage
+		lista = JSON.parse(testarLista);
+
+		//imprimir a lista na página
+		setLista(lista);
+	}
+	//caso contrário, imprimo a lista pela primeira vez e salvo no storage
+	else{
+		//imprimir a lista na página
+		setLista(lista);	
+	}
+}
+
+//inicializar a lista salva no storage e imprimir na página
+inicializarListaStorage();
